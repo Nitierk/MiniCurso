@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdCursosModelStoreContainer" CdmEntityContainer="bdCursos">
+    <EntitySetMapping Name="Cursos">
+      <EntityTypeMapping TypeName="bdCursosModel.Cursos">
+        <MappingFragment StoreEntitySet="Cursos">
+          <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
+          <ScalarProperty Name="CURSODESCRICAO" ColumnName="CURSODESCRICAO" />
+          <ScalarProperty Name="CURSOCODHABILIDADE" ColumnName="CURSOCODHABILIDADE" />
+          <ScalarProperty Name="CURSOMODALIDADE" ColumnName="CURSOMODALIDADE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Disciplinas">
+      <EntityTypeMapping TypeName="bdCursosModel.Disciplinas">
+        <MappingFragment StoreEntitySet="Disciplinas">
+          <ScalarProperty Name="DISID" ColumnName="DISID" />
+          <ScalarProperty Name="DISDESCRIACAO" ColumnName="DISDESCRIACAO" />
+          <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
+          <ScalarProperty Name="DISCH" ColumnName="DISCH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
