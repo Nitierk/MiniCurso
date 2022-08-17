@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniCursos.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace MiniCursos.Controllers
 {
     public class HomeController : Controller
     {
+        bdCursos bd = new bdCursos();
         public ActionResult Index()
         {
             return View();
@@ -25,6 +27,11 @@ namespace MiniCursos.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult DashboardCursos()
+        {
+            return View(bd.GrupoCursoQtdDisciplinas.ToList());
         }
     }
 }

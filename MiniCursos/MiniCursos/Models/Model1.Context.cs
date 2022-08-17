@@ -27,5 +27,6 @@ namespace MiniCursos.Models
     
         public virtual DbSet<Cursos> Cursos { get; set; }
         public virtual DbSet<Disciplinas> Disciplinas { get; set; }
+        public virtual DbSet<GrupoCursoQtdDisciplinas> GrupoCursoQtdDisciplinas { get; set; }
     }
 }

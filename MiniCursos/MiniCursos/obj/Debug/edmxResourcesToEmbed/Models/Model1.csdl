@@ -39,5 +39,16 @@
       <End Role="Cursos" EntitySet="Cursos" />
       <End Role="Disciplinas" EntitySet="Disciplinas" />
     </AssociationSet>
+    <EntitySet Name="GrupoCursoQtdDisciplinas" EntityType="bdCursosModel.GrupoCursoQtdDisciplinas" />
   </EntityContainer>
+  <EntityType Name="GrupoCursoQtdDisciplinas">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="Int32" Nullable="false" />
+    <Property Name="Curso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Habilidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Modalidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Quantidade" Type="Int32" />
+  </EntityType>
 </Schema>

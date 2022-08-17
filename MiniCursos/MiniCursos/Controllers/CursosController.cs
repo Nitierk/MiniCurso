@@ -30,9 +30,14 @@ namespace MiniCursos.Controllers
             novocurso.CURSOMODALIDADE = modalidade;
 
             bd.Cursos.Add(novocurso);
-            bd.SaveChanges();
+                bd.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete()
+        {
+            return View();
         }
         
     }

@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="bdCursosModel.Cursos" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="bdCursosModel.Disciplinas" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="bdCursosModel.FK__Disciplin__CURSO__3A81B327" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="bdCursosModel.GrupoCursoQtdDisciplinas" Width="1.5" PointX="5.125" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

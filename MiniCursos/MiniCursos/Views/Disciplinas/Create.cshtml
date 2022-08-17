@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<div>
+    <form action="/Disciplinas/Create" method="post">
+        <div>
+            <label>Disciplina:</label>
+            <input type="text" name="disciplina" id="disciplina"  required/>
+        </div>
+        <div>
+            <label>Curso:</label>
+            <select id="curso" name="curso">
+                @foreach (var item in ViewBag.ListaCursos)
+                {
+                    <option  value="@item.CURSOID">@item.CURSODESCRICAO</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label>Carga Horaria:</label>
+            <input type="text" name="ch" id="ch"  required />
+        </div>
+        <br />
+        <div>
+            <a class="btn btn-default" href="/Cursos/Index">Voltar</a>
+            <button class="btn btn-success" type="submit">Salvar</button>
+        </div>
+      
+    </form>
+</div>
+

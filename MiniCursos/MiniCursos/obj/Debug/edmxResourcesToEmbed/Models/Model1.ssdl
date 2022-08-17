@@ -18,6 +18,18 @@
     <Property Name="CURSOID" Type="int" />
     <Property Name="DISCH" Type="int" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'bdCursos.dbo.GrupoCursoQtdDisciplinas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GrupoCursoQtdDisciplinas">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" Nullable="false" />
+    <Property Name="Curso" Type="varchar" MaxLength="100" />
+    <Property Name="Habilidade" Type="varchar" MaxLength="100" />
+    <Property Name="Modalidade" Type="varchar" MaxLength="100" />
+    <Property Name="Quantidade" Type="int" />
+  </EntityType>
   <Association Name="FK__Disciplin__CURSO__3A81B327">
     <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
     <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="*" />
@@ -33,6 +45,15 @@
   <EntityContainer Name="bdCursosModelStoreContainer">
     <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GrupoCursoQtdDisciplinas" EntityType="Self.GrupoCursoQtdDisciplinas" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GrupoCursoQtdDisciplinas].[Codigo] AS [Codigo], 
+    [GrupoCursoQtdDisciplinas].[Curso] AS [Curso], 
+    [GrupoCursoQtdDisciplinas].[Habilidade] AS [Habilidade], 
+    [GrupoCursoQtdDisciplinas].[Modalidade] AS [Modalidade], 
+    [GrupoCursoQtdDisciplinas].[Quantidade] AS [Quantidade]
+    FROM [dbo].[GrupoCursoQtdDisciplinas] AS [GrupoCursoQtdDisciplinas]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK__Disciplin__CURSO__3A81B327" Association="Self.FK__Disciplin__CURSO__3A81B327">
       <End Role="Cursos" EntitySet="Cursos" />
       <End Role="Disciplinas" EntitySet="Disciplinas" />

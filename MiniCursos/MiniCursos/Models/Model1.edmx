@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="bdCursosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="bdCursosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cursos">
           <Key>
             <PropertyRef Name="CURSOID" />
@@ -23,6 +23,18 @@
           <Property Name="CURSOID" Type="int" />
           <Property Name="DISCH" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bdCursos.dbo.GrupoCursoQtdDisciplinas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GrupoCursoQtdDisciplinas">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Curso" Type="varchar" MaxLength="100" />
+          <Property Name="Habilidade" Type="varchar" MaxLength="100" />
+          <Property Name="Modalidade" Type="varchar" MaxLength="100" />
+          <Property Name="Quantidade" Type="int" />
+        </EntityType>
         <Association Name="FK__Disciplin__CURSO__3A81B327">
           <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
           <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="*" />
@@ -38,13 +50,21 @@
         <EntityContainer Name="bdCursosModelStoreContainer">
           <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GrupoCursoQtdDisciplinas" EntityType="Self.GrupoCursoQtdDisciplinas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GrupoCursoQtdDisciplinas].[Codigo] AS [Codigo], 
+    [GrupoCursoQtdDisciplinas].[Curso] AS [Curso], 
+    [GrupoCursoQtdDisciplinas].[Habilidade] AS [Habilidade], 
+    [GrupoCursoQtdDisciplinas].[Modalidade] AS [Modalidade], 
+    [GrupoCursoQtdDisciplinas].[Quantidade] AS [Quantidade]
+    FROM [dbo].[GrupoCursoQtdDisciplinas] AS [GrupoCursoQtdDisciplinas]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Disciplin__CURSO__3A81B327" Association="Self.FK__Disciplin__CURSO__3A81B327">
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="Disciplinas" EntitySet="Disciplinas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bdCursosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -87,7 +107,18 @@
             <End Role="Cursos" EntitySet="Cursos" />
             <End Role="Disciplinas" EntitySet="Disciplinas" />
           </AssociationSet>
+          <EntitySet Name="GrupoCursoQtdDisciplinas" EntityType="bdCursosModel.GrupoCursoQtdDisciplinas" />
         </EntityContainer>
+        <EntityType Name="GrupoCursoQtdDisciplinas">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Curso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Habilidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Modalidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Quantidade" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -111,6 +142,17 @@
                 <ScalarProperty Name="DISDESCRIACAO" ColumnName="DISDESCRIACAO" />
                 <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
                 <ScalarProperty Name="DISCH" ColumnName="DISCH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GrupoCursoQtdDisciplinas">
+            <EntityTypeMapping TypeName="bdCursosModel.GrupoCursoQtdDisciplinas">
+              <MappingFragment StoreEntitySet="GrupoCursoQtdDisciplinas">
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="Modalidade" ColumnName="Modalidade" />
+                <ScalarProperty Name="Habilidade" ColumnName="Habilidade" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
