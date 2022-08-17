@@ -33,6 +33,12 @@ textarea {
     text-align: right;
 }
 
-.dl-horizontal{
-    color: forestgreen;
+.divCursoItemDashboard {
+    background-color: forestgreen;
+    font-size: 10px;
+    margin: 2px;
+    height: 120px;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
 }

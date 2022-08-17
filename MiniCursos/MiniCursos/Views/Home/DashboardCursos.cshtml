@@ -3,14 +3,18 @@
     ViewBag.Title = "DashboardCursos";
 }
 
-<div>
+<div class="row">
     <h2>DashboardCursos</h2>
 </div>
-<div>
+<div class="row">
     @foreach (var item in Model)
     { 
-        <div class="col-md-2">
-            @item.Curso:<br /> @item.Quantidade
+        <div class="col-md-2 divCursoItemDashboard">
+            <div><h2> @item.Quantidade</h2></div>
+            
+            <div>@item.Curso</div>
+            
+
         </div>
         
     }
