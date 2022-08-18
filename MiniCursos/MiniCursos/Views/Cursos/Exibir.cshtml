@@ -1,12 +1,12 @@
 ﻿@model MiniCursos.Models.Cursos
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Excluir Curso</h2>
+<h2>Detalhes do Curso</h2>
 
 <div>
-    <form action="/Cursos/DeleteConfirmar?id=@Model.CURSOID" method="post">
+    <form action="/Cursos/Delete" method="post">
         <div>
             <label>Curso:</label>
             <label>@Model.CURSODESCRICAO</label>
@@ -25,7 +25,7 @@
         <br />
         <div>
             <a class="btn btn-default" href="/Cursos/Index">Voltar</a>
-            <button class="btn btn-danger" type="submit">Excluir</button>
+            
         </div>
       
     </form>

@@ -4,20 +4,20 @@
     <EntitySetMapping Name="Cursos">
       <EntityTypeMapping TypeName="bdCursosModel.Cursos">
         <MappingFragment StoreEntitySet="Cursos">
-          <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
-          <ScalarProperty Name="CURSODESCRICAO" ColumnName="CURSODESCRICAO" />
-          <ScalarProperty Name="CURSOCODHABILIDADE" ColumnName="CURSOCODHABILIDADE" />
           <ScalarProperty Name="CURSOMODALIDADE" ColumnName="CURSOMODALIDADE" />
+          <ScalarProperty Name="CURSOCODHABILIDADE" ColumnName="CURSOCODHABILIDADE" />
+          <ScalarProperty Name="CURSODESCRICAO" ColumnName="CURSODESCRICAO" />
+          <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Disciplinas">
       <EntityTypeMapping TypeName="bdCursosModel.Disciplinas">
         <MappingFragment StoreEntitySet="Disciplinas">
-          <ScalarProperty Name="DISID" ColumnName="DISID" />
-          <ScalarProperty Name="DISDESCRIACAO" ColumnName="DISDESCRIACAO" />
-          <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
           <ScalarProperty Name="DISCH" ColumnName="DISCH" />
+          <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
+          <ScalarProperty Name="DISDESCRIACAO" ColumnName="DISDESCRIACAO" />
+          <ScalarProperty Name="DISID" ColumnName="DISID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -28,6 +28,11 @@ namespace MiniCursos.Controllers
             novocurso.CURSODESCRICAO = nome;
             novocurso.CURSOCODHABILIDADE = habilidade;
             novocurso.CURSOMODALIDADE = modalidade;
+            Cursos ultimoCurso = bd.Cursos.ToList().Last();
+            int ultimoID = ultimoCurso.CURSOID;
+            novocurso.CURSOID = ultimoID + 1;
+
+            
 
             bd.Cursos.Add(novocurso);
                 bd.SaveChanges();
@@ -35,9 +40,41 @@ namespace MiniCursos.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete()
+        [HttpGet]
+        public ActionResult Delete(int? id)
         {
-            return View();
+            Cursos excluirCurso = bd.Cursos.ToList().Where(x => x.CURSOID == id).First();
+            return View(excluirCurso);
+        }
+        [HttpPost]
+        public ActionResult DeleteConfirmar(int? id)
+        {
+            Cursos excluirCurso = bd.Cursos.ToList().Where(x => x.CURSOID == id).First();
+            bd.Cursos.Remove(excluirCurso);
+            try
+            {
+                bd.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Mensagem.textoErro = "Não é Possivel excluir um Curso já relacionado a uma Disciplina";
+                return RedirectToAction("ErrorBd", "Home");
+            }
+            return RedirectToAction("Index");   
+        }
+
+
+        [HttpGet]
+        public ActionResult Exibir(int? id)
+        {
+            Cursos exibirCurso = bd.Cursos.ToList().Where(x => x.CURSOID == id).First();
+            return View(exibirCurso);
+        }
+
+        public ActionResult Editar(int id)
+        {
+            Cursos editarCurso = bd.Cursos.ToList().Where(x => x.CURSOID == id).First();
+            return View(editarCurso);
         }
 
         public ActionResult DisciplinasPorCurso(int? id)

@@ -33,5 +33,11 @@ namespace MiniCursos.Controllers
         {
             return View(bd.GrupoCursoQtdDisciplinas.ToList());
         }
+
+        public ActionResult ErrorBD()
+        {
+            ViewBag.mensagemErro = Mensagem.textoErro;
+            return View();
+        }
     }
 }

@@ -1,0 +1,30 @@
+﻿@model MiniCursos.Models.Cursos
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<div>
+    <form action="/Cursos/Create" method="post">
+        <div>
+            <label>Curso:</label>
+            <input type="text" name="nome" id="nome" value="@Model.CURSODESCRICAO" required/>
+        </div>
+        <div>
+            <label>Habilidade:</label>
+            <input type="text" name="habilidade" id="habilidade" value="@Model.CURSOCODHABILIDADE"  required />
+        </div>
+        <div>
+            <label>Modalidade:</label>
+            <input type="text" name="modalidade" id="modalidade" value="@Model.CURSOMODALIDADE"  required />
+        </div>
+        <br />
+        <div>
+            <a class="btn btn-default" href="/Cursos/Index">Voltar</a>
+            <button class="btn btn-success" type="submit">Salvar</button>
+        </div>
+      
+    </form>
+</div>
+

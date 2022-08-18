@@ -68,6 +68,15 @@ warning 6002: The table/view 'bdCursos.dbo.GrupoCursoQtdDisciplinas' does not ha
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bdCursosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="bdCursos" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cursos" EntityType="bdCursosModel.Cursos" />
+          <EntitySet Name="Disciplinas" EntityType="bdCursosModel.Disciplinas" />
+          <EntitySet Name="GrupoCursoQtdDisciplinas" EntityType="bdCursosModel.GrupoCursoQtdDisciplinas" />
+          <AssociationSet Name="FK__Disciplin__CURSO__3A81B327" Association="bdCursosModel.FK__Disciplin__CURSO__3A81B327">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Disciplinas" EntitySet="Disciplinas" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Cursos">
           <Key>
             <PropertyRef Name="CURSOID" />
@@ -76,7 +85,7 @@ warning 6002: The table/view 'bdCursos.dbo.GrupoCursoQtdDisciplinas' does not ha
           <Property Name="CURSODESCRICAO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CURSOCODHABILIDADE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CURSOMODALIDADE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Disciplinas" Relationship="Self.FK__Disciplin__CURSO__3A81B327" FromRole="Cursos" ToRole="Disciplinas" />
+          <NavigationProperty Name="Disciplinas" Relationship="bdCursosModel.FK__Disciplin__CURSO__3A81B327" FromRole="Cursos" ToRole="Disciplinas" />
         </EntityType>
         <EntityType Name="Disciplinas">
           <Key>
@@ -86,29 +95,8 @@ warning 6002: The table/view 'bdCursos.dbo.GrupoCursoQtdDisciplinas' does not ha
           <Property Name="DISDESCRIACAO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CURSOID" Type="Int32" />
           <Property Name="DISCH" Type="Int32" />
-          <NavigationProperty Name="Cursos" Relationship="Self.FK__Disciplin__CURSO__3A81B327" FromRole="Disciplinas" ToRole="Cursos" />
+          <NavigationProperty Name="Cursos" Relationship="bdCursosModel.FK__Disciplin__CURSO__3A81B327" FromRole="Disciplinas" ToRole="Cursos" />
         </EntityType>
-        <Association Name="FK__Disciplin__CURSO__3A81B327">
-          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
-          <End Role="Disciplinas" Type="Self.Disciplinas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cursos">
-              <PropertyRef Name="CURSOID" />
-            </Principal>
-            <Dependent Role="Disciplinas">
-              <PropertyRef Name="CURSOID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="bdCursos" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cursos" EntityType="Self.Cursos" />
-          <EntitySet Name="Disciplinas" EntityType="Self.Disciplinas" />
-          <AssociationSet Name="FK__Disciplin__CURSO__3A81B327" Association="Self.FK__Disciplin__CURSO__3A81B327">
-            <End Role="Cursos" EntitySet="Cursos" />
-            <End Role="Disciplinas" EntitySet="Disciplinas" />
-          </AssociationSet>
-          <EntitySet Name="GrupoCursoQtdDisciplinas" EntityType="bdCursosModel.GrupoCursoQtdDisciplinas" />
-        </EntityContainer>
         <EntityType Name="GrupoCursoQtdDisciplinas">
           <Key>
             <PropertyRef Name="Codigo" />
@@ -119,6 +107,18 @@ warning 6002: The table/view 'bdCursos.dbo.GrupoCursoQtdDisciplinas' does not ha
           <Property Name="Modalidade" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Quantidade" Type="Int32" />
         </EntityType>
+        <Association Name="FK__Disciplin__CURSO__3A81B327">
+          <End Type="bdCursosModel.Cursos" Role="Cursos" Multiplicity="0..1" />
+          <End Type="bdCursosModel.Disciplinas" Role="Disciplinas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="CURSOID" />
+            </Principal>
+            <Dependent Role="Disciplinas">
+              <PropertyRef Name="CURSOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -128,20 +128,20 @@ warning 6002: The table/view 'bdCursos.dbo.GrupoCursoQtdDisciplinas' does not ha
           <EntitySetMapping Name="Cursos">
             <EntityTypeMapping TypeName="bdCursosModel.Cursos">
               <MappingFragment StoreEntitySet="Cursos">
-                <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
-                <ScalarProperty Name="CURSODESCRICAO" ColumnName="CURSODESCRICAO" />
-                <ScalarProperty Name="CURSOCODHABILIDADE" ColumnName="CURSOCODHABILIDADE" />
                 <ScalarProperty Name="CURSOMODALIDADE" ColumnName="CURSOMODALIDADE" />
+                <ScalarProperty Name="CURSOCODHABILIDADE" ColumnName="CURSOCODHABILIDADE" />
+                <ScalarProperty Name="CURSODESCRICAO" ColumnName="CURSODESCRICAO" />
+                <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Disciplinas">
             <EntityTypeMapping TypeName="bdCursosModel.Disciplinas">
               <MappingFragment StoreEntitySet="Disciplinas">
-                <ScalarProperty Name="DISID" ColumnName="DISID" />
-                <ScalarProperty Name="DISDESCRIACAO" ColumnName="DISDESCRIACAO" />
-                <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
                 <ScalarProperty Name="DISCH" ColumnName="DISCH" />
+                <ScalarProperty Name="CURSOID" ColumnName="CURSOID" />
+                <ScalarProperty Name="DISDESCRIACAO" ColumnName="DISDESCRIACAO" />
+                <ScalarProperty Name="DISID" ColumnName="DISID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

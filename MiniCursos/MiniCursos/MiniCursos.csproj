@@ -143,6 +143,7 @@
     <Compile Include="Models\GrupoCursoQtdDisciplinas.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mensagem.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -221,6 +222,9 @@
     <Content Include="Views\Cursos\Delete.cshtml" />
     <Content Include="Views\Home\DashboardCursos.cshtml" />
     <Content Include="Views\Cursos\DisciplinasPorCurso.cshtml" />
+    <Content Include="Views\Cursos\Exibir.cshtml" />
+    <Content Include="Views\Home\ErrorBd.cshtml" />
+    <Content Include="Views\Cursos\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

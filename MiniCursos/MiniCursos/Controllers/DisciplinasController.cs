@@ -24,7 +24,13 @@ namespace MiniCursos.Controllers
         [HttpPost]
         public ActionResult Create(string disciplina, string curso, int ch)
         {
+            Disciplinas novadisciplina = new Disciplinas();
+            novadisciplina.DISDESCRIACAO = disciplina;
+            novadisciplina.CURSOID = Convert.ToInt32(curso);
+            novadisciplina.DISCH = ch;
 
+            bd.Disciplinas.Add(novadisciplina);
+            bd.SaveChanges();
             return RedirectToAction("Index");
         }
 
