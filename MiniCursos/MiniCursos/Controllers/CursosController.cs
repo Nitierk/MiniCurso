@@ -39,6 +39,11 @@ namespace MiniCursos.Controllers
         {
             return View();
         }
+
+        public ActionResult DisciplinasPorCurso(int? id)
+        {
+            return View(bd.Disciplinas.ToList().ToList().Where(x => x.CURSOID == id));
+        }
         
     }
 }
