@@ -14,7 +14,17 @@ namespace MiniCursos.Controllers
         public ActionResult Index()
         {
             ViewBag.qtdCursos = bd.Cursos.ToList().Count();
-            return View(bd.Cursos.ToList());
+            if (Session["MyCurso"] != null)
+            {
+                return View(bd.Cursos.ToList());
+            }
+            else
+            {
+                Mensagem.textoErro = "Faça Login";
+                return RedirectToAction("Login", "Home");
+            }
+          
+            
         }
         [HttpGet]
         public ActionResult Create()

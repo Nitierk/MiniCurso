@@ -31,13 +31,44 @@ namespace MiniCursos.Controllers
 
         public ActionResult DashboardCursos()
         {
-            return View(bd.GrupoCursoQtdDisciplinas.ToList());
+            if (Session["MyCurso"] != null)
+            {
+                return View(bd.GrupoCursoQtdDisciplinas.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            
         }
 
         public ActionResult ErrorBD()
         {
             ViewBag.mensagemErro = Mensagem.textoErro;
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult VerificarLogin(string login, string senha)
+        {
+            bool validado = true;
+            if (validado)
+            {
+                Session["MyCurso"] = "MyCurso";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.textoErro = "Login ou Senha incorreto";
+                return RedirectToAction("Login");
+            }
+            return null;
         }
     }
 }

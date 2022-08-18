@@ -42,3 +42,29 @@ textarea {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
 }
+
+.divlogin{
+    text-align: center;
+    justify-content: center;
+    margin:10px;
+    display: flex;
+    direction: inherit;
+    padding-top:250px;
+        
+}
+
+.backlogin {
+    background-image: url(https://www.ih5g.com/wp-content/uploads/2017/10/login-background.jpg);
+}
+
+.inputLogin {
+    height: 40px;
+    width: 500px;
+    border-radius: 10px;
+    border-inline-color: cadetblue;
+    border-block-color: cadetblue;
+}
+
+.btnLogin {
+    margin-left: 50px;
+}

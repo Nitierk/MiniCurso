@@ -225,6 +225,7 @@
     <Content Include="Views\Cursos\Exibir.cshtml" />
     <Content Include="Views\Home\ErrorBd.cshtml" />
     <Content Include="Views\Cursos\Editar.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
